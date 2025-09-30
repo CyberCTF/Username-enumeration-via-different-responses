@@ -18,6 +18,10 @@ employees.db
 htmlcov/
 .pytest_cache/
 coverage.xml
+
+# Documentation files not needed in repo
+WRITEUP.md
+RULES.md
 junit-*.xml
 
 # Sphinx / docs
