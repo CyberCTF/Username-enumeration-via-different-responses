@@ -43,3 +43,8 @@ node_modules/
 # Build artifacts (but keep our app structure)
 dist/
 *.egg-info/
+
+# Documentation files to exclude from repository
+RULES.md
+WRITEUP.md
+docs/
