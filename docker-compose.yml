@@ -1,10 +1,6 @@
-version: "3.8"
 services:
   app:
-    build:
-      context: ./build/app
-      dockerfile: Dockerfile
-    image: employee-portal:latest
+    image: cyberctf/username-enumeration-via-different-responses:latest
     container_name: employee-portal-prod
     ports:
       - "3206:5000"

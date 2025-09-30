@@ -1,40 +1,45 @@
-# Deployment and Development Guide
+# Username Enumeration via Different Responses
 
-## Development Environment
+## 🎯 Challenge Description
+This is a vulnerable Flask application designed to demonstrate username enumeration attacks through different server responses.
 
-### Local Development with Docker Compose
+## 🚀 Quick Start
 
-1. **Development mode** (avec hot-reload):
+### Pull and Run
 ```bash
-cd build/deploy
-docker-compose -f docker-compose.dev.yml up --build
+docker pull cyberctf/username-enumeration-via-different-responses:latest
+docker run -d -p 3206:5000 cyberctf/username-enumeration-via-different-responses:latest
 ```
 
-L'application sera accessible sur http://localhost:3206
+### Access Application
+- Open your browser to `http://localhost:3206`
+- Try different usernames to observe response differences
 
-### Production Deployment
-
-Pour déployer en production, utilisez le docker-compose.yml à la racine :
-
-```bash
-# À la racine du projet
-docker-compose up --build -d
+### Docker Compose
+```yaml
+services:
+  app:
+    image: cyberctf/username-enumeration-via-different-responses:latest
+    ports:
+      - "3206:5000"
+    restart: unless-stopped
 ```
 
-## Structure du Projet
+## 🔧 Configuration
+- **Port**: Application runs on port 5000 internally
+- **Database**: SQLite in-memory (resets on restart)
+- **Environment**: Production ready
 
-```
-build/
-├── app/                    # Code applicatif
-│   ├── Dockerfile         # Container de l'app
-│   ├── app.py            # Point d'entrée Flask
-│   ├── requirements.txt  # Dépendances Python
-│   ├── templates/        # Templates HTML
-│   └── tests/           # Tests unitaires
-└── deploy/              # Configuration déploiement
-    ├── docker-compose.dev.yml  # Configuration développement
-    └── README.md               # Ce fichier
-```
+## 📚 Learning Objectives
+- Understand username enumeration vulnerabilities
+- Learn to identify timing and response differences
+- Practice reconnaissance techniques
+
+## 🏷️ Tags
+`cybersecurity` `ctf` `flask` `vulnerability` `enumeration` `python`
+
+---
+**CyberCTF** - Cybersecurity Training Platform
 
 ## Tests
 
