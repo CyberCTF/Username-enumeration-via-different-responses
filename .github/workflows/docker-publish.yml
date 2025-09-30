@@ -1,0 +1,60 @@
+name: CI - Build, Test & Publish
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r build/app/requirements.txt
+    
+    - name: Run tests
+      run: python build/app/tests/main.py
+    
+    - name: Test Docker build
+      run: |
+        docker build -f build/app/Dockerfile -t employee-portal-test build/app
+    
+    - name: Test Docker run
+      run: |
+        docker run -d --name employee-portal-test -p 3206:5000 employee-portal-test
+        sleep 15
+        curl -f http://localhost:3206/ || exit 1
+        docker stop employee-portal-test
+        docker rm employee-portal-test
+
+  build_and_publish:
+    needs: test
+    runs-on: ubuntu-latest
+    if: success() && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./deploy/Dockerfile
+        push: false
+        tags: employee-portal:latest
+        cache-from: type=gha
+        cache-to: type=gha,mode=max

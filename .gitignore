@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Envs
+venv/
+.env
+.env.local
+
+# Logs & runtime
+*.log
+*.sqlite3
+employees.db
+
+# Test / coverage artifacts
+.coverage
+htmlcov/
+.pytest_cache/
+coverage.xml
+junit-*.xml
+
+# Sphinx / docs
+docs/_build/
+docs/.cache
+
+# Docker
+docker-data/
+*.pid
+*.sock
+
+# IDEs
+.vscode/
+.idea/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Build artifacts (but keep our app structure)
+dist/
+*.egg-info/

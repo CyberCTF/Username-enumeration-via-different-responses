@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Employees - Employee Portal{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- Header -->
+    <div class="glass rounded-lg p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-100">Employee Directory</h1>
+                <p class="text-gray-400 mt-1">Browse all company employees</p>
+            </div>
+            <div class="text-sm text-gray-400">
+                {{ employees|length }} employees total
+            </div>
+        </div>
+    </div>
+
+    <!-- Employees Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for employee in employees %}
+        <div class="glass rounded-lg p-6 hover:bg-gray-700/50 transition-all duration-200">
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold text-lg">
+                            {{ employee[1].split()[0][0] }}{{ employee[1].split()[-1][0] }}
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-200">{{ employee[1] }}</h3>
+                        <p class="text-sm text-gray-400">@{{ employee[0] }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wide">Department</label>
+                    <p class="text-gray-200">{{ employee[2] }}</p>
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wide">Email</label>
+                    <p class="text-gray-200 text-sm">{{ employee[3] }}</p>
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wide">Member Since</label>
+                    <p class="text-gray-200 text-sm">{{ employee[4] }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Department Summary -->
+    <div class="glass rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-100 mb-4">Department Summary</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="text-center p-4 rounded-lg bg-blue-900/20 border border-blue-500/30">
+                <div class="text-2xl font-bold text-blue-400">3</div>
+                <div class="text-sm text-gray-400">Engineering</div>
+            </div>
+            <div class="text-center p-4 rounded-lg bg-green-900/20 border border-green-500/30">
+                <div class="text-2xl font-bold text-green-400">2</div>
+                <div class="text-sm text-gray-400">Marketing</div>
+            </div>
+            <div class="text-center p-4 rounded-lg bg-purple-900/20 border border-purple-500/30">
+                <div class="text-2xl font-bold text-purple-400">2</div>
+                <div class="text-sm text-gray-400">Sales</div>
+            </div>
+            <div class="text-center p-4 rounded-lg bg-yellow-900/20 border border-yellow-500/30">
+                <div class="text-2xl font-bold text-yellow-400">3</div>
+                <div class="text-sm text-gray-400">Other</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
