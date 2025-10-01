@@ -9,7 +9,7 @@ services:
       - ../app:/app
     command: python /app/app.py
     ports:
-      - "3206:5000"
+      - "3206:3206"
     environment:
       - FLASK_ENV=development
       - FLASK_DEBUG=1

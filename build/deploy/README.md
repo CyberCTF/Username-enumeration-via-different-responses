@@ -8,7 +8,7 @@ This is a vulnerable Flask application designed to demonstrate username enumerat
 ### Pull and Run
 ```bash
 docker pull cyberctf/username-enumeration-via-different-responses:latest
-docker run -d -p 3206:5000 cyberctf/username-enumeration-via-different-responses:latest
+docker run -d -p 3206:3206 cyberctf/username-enumeration-via-different-responses:latest
 ```
 
 ### Access Application
@@ -21,12 +21,12 @@ services:
   app:
     image: cyberctf/username-enumeration-via-different-responses:latest
     ports:
-      - "3206:5000"
+      - "3206:3206"
     restart: unless-stopped
 ```
 
 ## 🔧 Configuration
-- **Port**: Application runs on port 5000 internally
+- **Port**: Application runs on port 3206 internally
 - **Database**: SQLite in-memory (resets on restart)
 - **Environment**: Production ready
 

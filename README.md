@@ -15,7 +15,7 @@ This lab demonstrates a vulnerability in an employee management portal where use
 ### Using Docker
 ```bash
 docker pull cyberctf/username-enumeration-via-different-responses:latest
-docker run -d -p 3206:5000 cyberctf/username-enumeration-via-different-responses:latest
+docker run -d -p 3206:3206 cyberctf/username-enumeration-via-different-responses:latest
 ```
 
 ### Using Docker Compose
