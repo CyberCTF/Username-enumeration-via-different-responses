@@ -30,19 +30,56 @@
         }
     </script>
     <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
         .glass {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        }
+        .elegant-shadow {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        .subtle-border {
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .professional-input {
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+        .professional-input:focus {
+            background: rgba(20, 20, 20, 0.9);
+            border-color: #0066ff;
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+        }
+        .professional-btn {
+            background: #0066ff;
+            border: 1px solid #0066ff;
+            transition: all 0.3s ease;
+        }
+        .professional-btn:hover {
+            background: #0052cc;
+            border-color: #0052cc;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
+        }
+        .icon-bg {
+            background: linear-gradient(135deg, #333333 0%, #444444 100%);
+            border: 1px solid #0066ff;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 min-h-screen text-gray-100">
-    <nav class="glass border-b border-gray-700">
+<body class="text-gray-100">
+    <nav class="glass subtle-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="{{ url_for('index') }}" class="text-xl font-bold text-blue-400">
+                    <a href="{{ url_for('index') }}" class="text-xl font-semibold text-white hover:text-gray-300 transition-colors">
                         Employee Portal
                     </a>
                 </div>
